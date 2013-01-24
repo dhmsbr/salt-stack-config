@@ -1,0 +1,78 @@
+#upstream csd_client {
+#    server unix:/tmp/gunicorn_csd_client.sock fail_timeout=0;
+#}
+
+server {
+    listen 80;
+    client_max_body_size 4G;
+    server_name 2062.co;
+
+    keepalive_timeout 5;
+
+    location /static/ {
+        # path for static files
+        root /home/slang/csd_client/;
+    }
+
+    # favicon needs to be able to be sent from the default location
+    rewrite ^/favicon\.ico$ /static/favicon.ico permanent;
+
+
+    location /re {
+        # set cache & get static file
+        expires 1y;
+        try_files /home/slang/csd_client/index.html =404;
+    }
+
+    #get rid of trailing slash
+    rewrite ^/re/$ /re permanent;
+
+    # add the /re to the url to spell core
+    rewrite ^/$ /re permanent;
+
+#    location /re {
+#        # rewrite the location back to "/" before sending to gunicorn (but don't redirect)
+#        rewrite ^/re$ / break;
+#
+#        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#        proxy_set_header Host $http_host;
+#        proxy_redirect off;
+#        proxy_cache CSD;
+#   proxy_cache_valid 200 302 301 304 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 500 501 502 503 1y;
+#        proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
+#        proxy_pass http://csd_client;
+#    }
+
+
+    #mapping all error codes to error pages
+    #error pages are not setup yet
+    #error_page 400 /error/400;
+    #error_page 401 /error/401;
+    #error_page 402 /error/402;
+    #error_page 403 /error/403;
+    #error_page 404 /error/404;
+    #error_page 405 /error/405;
+    #error_page 406 /error/406;
+    #error_page 407 /error/407;
+    #error_page 408 /error/408;
+    #error_page 409 /error/409;
+    #error_page 410 /error/410;
+    #error_page 411 /error/411;
+    #error_page 412 /error/412;
+    #error_page 413 /error/413;
+    #error_page 414 /error/414;
+    #error_page 415 /error/415;
+    #error_page 416 /error/416;
+    #error_page 417 /error/417;
+    #error_page 418 /error/418;
+
+    #error_page 500 /error/500;
+    #error_page 501 /error/501;
+    #error_page 502 /error/502;
+    #error_page 503 /error/503;
+}
+
+server {
+   server_name ~^[a-z]*(:?\.)?(2062)\..*$;
+   rewrite ^ http://2062.co$request_uri? permanent;
+}
