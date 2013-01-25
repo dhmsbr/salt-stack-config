@@ -20,7 +20,7 @@ nginx:
     - source: salt://nginx/config
     - user: root
     - group: root
-    - mode: 644
+    - file_mode: 644
 
 /etc/nginx/htpasswd:
   file.recurse:
