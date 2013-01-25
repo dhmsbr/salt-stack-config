@@ -6,7 +6,7 @@ nginx:
     - require:
       - pkg: nginx
       - file: /etc/nginx
-      - file: /etc/nginx/htpasswd
+#      - file: /etc/nginx/htpasswd
     - watch:
       - file: /etc/nginx/timestamp
 
