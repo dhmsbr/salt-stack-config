@@ -1,8 +1,8 @@
 base:
-  '*'
+  '*':
     - apt.unattended
     - apt_sources
-    - gunicorn.d
+    - gunicorn
     - nginx
     - ssh
     - misc
