@@ -1,5 +1,6 @@
 gunicorn:
-  - pip.installed
+  pip.installed:
+  	name: gunicorn
 
 #/etc/gunicorn.d:
 #  file.managed:
