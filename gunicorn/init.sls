@@ -1,6 +1,8 @@
 gunicorn:
   pip.installed:
     - name: gunicorn
+    - require:
+      - pkg: python-pip
 
 #/etc/gunicorn.d:
 #  file.managed:
