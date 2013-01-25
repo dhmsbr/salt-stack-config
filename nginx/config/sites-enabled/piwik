@@ -3,7 +3,7 @@ server {
     client_max_body_size 4G;
     server_name piwik.*;
 
-    root /home/slang/piwik;
+    root /var/www/piwik;
     index index.php index.html index.htm;
 
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
@@ -14,7 +14,7 @@ server {
            # With php5-cgi alone:
            fastcgi_pass 127.0.0.1:9000;
            # With php5-fpm:
-#           fastcgi_pass unix:/var/run/php5-fpm.sock;
+#          fastcgi_pass unix:/var/run/php5-fpm.sock;
            fastcgi_index index.php;
            include fastcgi_params;
     }
@@ -23,7 +23,5 @@ server {
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
         try_files $uri $uri/ /index.php;
-        # Uncomment to enable naxsi on this location
-        # include /etc/nginx/naxsi.rules
     }
 }

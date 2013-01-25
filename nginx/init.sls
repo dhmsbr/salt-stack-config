@@ -29,3 +29,7 @@ nginx:
     - group: www-data
     - dir_mode: 544
     - file_mode: 444
+
+/var/cache/nginx:
+  file.directory:
+    - makedirs: True
