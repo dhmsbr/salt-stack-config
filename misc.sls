@@ -5,3 +5,7 @@ git:
 screen:
   pkg:
     - installed
+
+python-pip:
+  pkg:
+    - installed
