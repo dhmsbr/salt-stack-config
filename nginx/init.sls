@@ -33,3 +33,7 @@ nginx:
 /var/cache/nginx:
   file.directory:
     - makedirs: True
+
+/var/www:
+  file.directory:
+    - makedirs: True
