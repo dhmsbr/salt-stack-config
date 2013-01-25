@@ -6,6 +6,3 @@ base:
     - nginx
     - ssh
     - misc
-
-
-/gunicorn.d', '/etc/gunicorn.d'
