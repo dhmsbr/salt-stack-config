@@ -5,7 +5,7 @@
 server {
     listen 80;
     client_max_body_size 4G;
-    server_name 2062.co;
+    server_name csd.*;
 
     keepalive_timeout 5;
 
