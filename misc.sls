@@ -6,10 +6,6 @@ screen:
   pkg:
     - installed
 
-wordpress:
-  pkg:
-    - installed
-
 # fix below part
 #python-setuptools:
 #  pkg:
