@@ -5,6 +5,7 @@ server {
     client_max_body_size 4G;
 
     try_files $uri $uri/ /index.php;
+    index index.php index.html index.htm;
 
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     location ~ \.php$ {
