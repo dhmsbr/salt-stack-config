@@ -11,6 +11,6 @@ php5-pkgs:
       - php5-mysql
       - php5-fpm
 
-wordpress
+wordpress:
   pkg:
     - installed
