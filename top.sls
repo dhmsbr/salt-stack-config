@@ -7,6 +7,7 @@ base:
     - ssh
     - misc
     - mongo
+    - php5
     - wordpress
 
 #add wordpress install stuff later
