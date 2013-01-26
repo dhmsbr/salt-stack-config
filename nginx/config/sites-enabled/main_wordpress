@@ -1,7 +1,7 @@
 server {
     listen       80;
-    server_name  2062.co;
-    root         /var/www/main;
+    server_name  _;
+    root         /var/www/wordpress;
 
     try_files $uri $uri/ /index.php;
 
