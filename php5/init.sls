@@ -11,6 +11,6 @@ php5-pkgs:
       - php5-mysql
       - php5-fpm
 
-wordpress:
-  pkg:
-    - installed
+/etc/php5/fpm/php.ini:
+  file.managed:
+    - source: salt://php5/php.ini
