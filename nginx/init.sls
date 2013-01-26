@@ -8,7 +8,7 @@ nginx:
       - file: /etc/nginx
 #      - file: /etc/nginx/htpasswd
     - watch:
-      - file: /etc/nginx/timestamp
+      - file: /etc/nginx/*
 
 /etc/nginx/timestamp:
   file.managed:
