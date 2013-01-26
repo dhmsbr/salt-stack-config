@@ -17,6 +17,7 @@ ssh:
 /home/root/.ssh:
   file.directory:
     - makedirs: True
+    - mode: 600
 
 /home/root/.ssh/authorized_keys:
   file.managed:
