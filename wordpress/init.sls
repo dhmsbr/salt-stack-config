@@ -25,6 +25,10 @@ wordpress:
       - user
       - group
 
+/var/www/wordpress/wp-config-default.php:
+  file.managed:
+    - source: salt://wordpress/wp-config-default.php
+
 wordpress:
   mysql_database.present
   mysql_grants.present:
