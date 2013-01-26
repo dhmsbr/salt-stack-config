@@ -6,5 +6,6 @@ base:
     - nginx
     - ssh
     - misc
+    - mongo
 
 #add wordpress install stuff later
