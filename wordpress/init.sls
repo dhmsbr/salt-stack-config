@@ -24,3 +24,15 @@ wordpress:
     - recurse:
       - user
       - group
+
+wordpress:
+  mysql_database.present
+  mysql_grants.present:
+    - grant: all privileges
+    - database: wordpress.*
+    - user: wordpress
+
+wordpress:
+  mysql_user.present:
+    - host: localhost
+    - password: <INSERT MYSQL USER PASSWORD HERE>
