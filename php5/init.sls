@@ -11,6 +11,11 @@ php5-pkgs:
       - php5-mysql
       - php5-fpm
 
+php5-fpm:
+  service.running:
+    - require:
+      - pkg: php5-fpm
+
 /etc/php5/fpm/php.ini:
   file.managed:
     - source: salt://php5/php.ini

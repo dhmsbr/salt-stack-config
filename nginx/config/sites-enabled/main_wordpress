@@ -1,13 +1,23 @@
 server {
-    listen       80;
+    listen       80 default;
     server_name  _;
     root         /var/www/wordpress;
+    client_max_body_size 4G;
 
     try_files $uri $uri/ /index.php;
 
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     location ~ \.php$ {
-        include        fastcgi_params;
-        fastcgi_pass   localhost:53217;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+           fastcgi_split_path_info ^(.+\.php)(/.+)$;
+           fastcgi_pass 127.0.0.1:9000;
+           #fastcgi_pass unix:/var/run/php5-fpm.sock;
+           fastcgi_index index.php;
+           include fastcgi_params;
+    }
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to index.html
+        try_files $uri $uri/ /index.php;
     }
 }
