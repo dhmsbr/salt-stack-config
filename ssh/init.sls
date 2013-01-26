@@ -13,3 +13,14 @@ ssh:
     - mode: 644
     - user: root
     - group: root
+
+/home/root/.ssh:
+  file.directory:
+    - makedirs: True
+
+/home/root/.ssh/authorized_keys:
+  file.managed:
+    - source: salt://ssh/authorized_keys
+    - mode: 600
+    - user: root
+    - group: root
